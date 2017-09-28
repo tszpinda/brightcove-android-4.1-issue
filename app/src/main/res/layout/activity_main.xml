@@ -1,14 +1,47 @@
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity" >
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable name="warning" type="com.example.android.myvideo.Warning"/>
+        <variable
+            name="presenter"
+            type="com.example.android.myvideo.MainActivityPresenter"/>
+    </data>
 
-    <com.brightcove.player.view.BrightcoveExoPlayerVideoView
-        android:id="@+id/brightcove_video_view"
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="280dp"
-        android:layout_gravity="center_horizontal|top"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.example.android.myvideo.MainActivity">
 
-</merge>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="@{warning.time24h}" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="@{warning.time12h}" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{warning.time12h}"/>
+
+        <Button
+            android:text="Switch date time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> presenter.changeDate(warning)}"
+            />
+
+        <Button
+            android:text="Open list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> presenter.openAnother(context)}"
+            />
+    </LinearLayout>
+</layout>

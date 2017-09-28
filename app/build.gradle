@@ -7,6 +7,7 @@ repositories {
     maven { url 'http://repo.brightcove.com/releases' }
     maven { url "https://dl.bintray.com/mousebirdconsulting/WhirlyGlobe/" }
     maven { url 'http://repo.brightcove.com/releases' }
+    maven { url 'https://maven.google.com' }
     flatDir { dirs 'libs' }
 }
 
@@ -27,6 +28,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -37,5 +41,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile "com.brightcove.player:exoplayer:4.13.0"
+    compile "com.android.support:recyclerview-v7:26.1.0"
     testCompile 'junit:junit:4.12'
 }
